@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'storage_keys.dart';
 
-class LocalStorage {
+abstract class LocalStorage {
   LocalStorage._();
 
   static SharedPreferences? _preferences;
@@ -18,6 +18,14 @@ class LocalStorage {
       _preferences?.getString(StorageKeys.keyToken) ?? '';
 
   static void _deleteToken() => _preferences?.remove(StorageKeys.keyToken);
+
+  static Future<void> setTokens(List<String> tokens) async {
+    await _preferences?.setStringList(StorageKeys.keyTokens, tokens);
+  }
+
+  static List<String> getTokens()  {
+    return _preferences?.getStringList(StorageKeys.keyTokens) ?? [];
+  }
 
   static void logout() {
     _deleteToken();

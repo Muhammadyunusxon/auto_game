@@ -14,7 +14,7 @@ class AppConstants {
   static const String androidPackageName = 'uz.example';
   static const String iosPackageName = 'uz.example';
 
-  static const int radius = 16;
+  static const double radius = 16;
 
   //location
   static const double demoLatitude = 40.2725769;
